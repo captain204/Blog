@@ -106,7 +106,7 @@ def update(id):
         flash("Article Updated","success")
         return redirect(url_for('dashboard'))
 
-    return render_template("admin/update.html", post = result, form=form)
+    return render_template("admin/update.html",  form=form)
 
 
 @app.route("/delete/<string:id>/",methods=['POST'])
