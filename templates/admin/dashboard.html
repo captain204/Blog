@@ -1,0 +1,37 @@
+{% extends"admin/layouts_admin.html"%}
+{% block body %}
+    <div class="row"> 
+        <div class="col-md-12">
+        
+                <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">S/N</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Body</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        {% for  posts in post %}
+                          <tr>
+                            <td>{{posts.id}}</td>
+                            <td>{{posts.title}}</td>
+                            <td>{{posts.body[:20]}}...</td>
+                            <td>{{posts.author}}</td>
+                            <td><a href="/update/{{posts.id}}" class="btn btn-primary">Update</a> </td>
+                            <td>
+                              <form action="{{url_for('delete',id=posts.id)}}" method="POST">
+                                <input type="hidden", name="_method" value="DELETE">
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                              </form>
+                            </td>
+                          </tr>
+                        {% endfor %} 
+                      </table>            
+        </div>
+    </div>
+{% endblock %}
+
+
+
